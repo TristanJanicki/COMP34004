@@ -39,6 +39,10 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
+<<<<<<< Updated upstream
+=======
+        //final Button dummyLogin = findViewById(R.id.dummyLogin);
+>>>>>>> Stashed changes
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
@@ -49,10 +53,16 @@ public class LoginActivity extends AppCompatActivity {
             usernameEditText.setText(savedInstanceState.get("email").toString());
         }
 
-        usernameEditText.setText("tristan.janicki@gmail.com");
-        passwordEditText.setText("newPassword1");
-//        usernameEditText.setText("tt700joe@gmail.com");
+//        usernameEditText.setText("tristan.janicki@gmail.com");
 //        passwordEditText.setText("newPassword1");
+//        usernameEditText.setText("tt700joe@gmail.com");
+<<<<<<< Updated upstream
+//        passwordEditText.setText("newPassword1");
+=======
+//        passwordEditText.setText("j4IkT9Zt");
+        usernameEditText.setText("farzalkhan@gmail.com");
+        passwordEditText.setText("Bkb_hCG8");
+>>>>>>> Stashed changes
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -216,6 +226,16 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< Updated upstream
+=======
+//        dummyLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openDummyHomeActivity();
+//            }
+//        });
+
+>>>>>>> Stashed changes
         button_SignUp = findViewById(R.id.signUp);
         button_SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -231,12 +251,21 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     public void openHomeActivity(LoggedInUser user) {
         Intent intent = new Intent(this, HomeAcitvity.class);
         intent.putExtra("user", user);
         startActivity(intent);
     }
 
+<<<<<<< Updated upstream
+=======
+//    public void openDummyHomeActivity() {
+//        Intent intent = new Intent(this, Navigation.class);
+//        startActivity(intent);
+//    }
+
+>>>>>>> Stashed changes
     public void openAuthChallengeActivity(AuthChallengeRequiredParameters params){
         Bundle data = new Bundle();
         data.putString("email", params.email);

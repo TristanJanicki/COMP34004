@@ -5,6 +5,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+<<<<<<< Updated upstream
+=======
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+>>>>>>> Stashed changes
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,7 +29,18 @@ import com.anychart.graphics.vector.SolidFill;
 import com.anychart.graphics.vector.text.HAlign;
 import com.example.quantrlogin.R;
 import com.example.quantrlogin.data.dbmodels.LoggedInUser;
+<<<<<<< Updated upstream
 import com.example.quantrlogin.data.dbmodels.ThresholdExperiment;
+=======
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
+>>>>>>> Stashed changes
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +54,7 @@ public class HomeAcitvity extends AppCompatActivity {
     LoggedInUser user;
 
     @Override
+<<<<<<< Updated upstream
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -90,6 +110,94 @@ public class HomeAcitvity extends AppCompatActivity {
 
 
     }
+=======
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.activity_home, container, false);
+        user = (LoggedInUser) getActivity().getIntent().getSerializableExtra("user");
+
+//        mySignal = view.findViewById(R.id.mySignals);
+//        mySignal.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                MySignals mySignals_fragment = new MySignals();
+//                FragmentManager manager = getFragmentManager();
+//                manager.beginTransaction()
+//                        .replace(R.id.fragment_container, mySignals_fragment, mySignals_fragment.getTag())
+//                        .commit();
+//            }
+//        });
+
+//        newSignal = view.findViewById(R.id.newSignals);
+//        newSignal.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), NewSignal.class);
+//                startActivity(intent);
+//            }
+//        });
+
+//        signalCalender = view.findViewById(R.id.signalCalender);
+//        signalCalender.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getActivity(), "Available in a future update.", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+        lineChart = view.findViewById(R.id.home_chart_view);
+        lineChart.setTouchEnabled(true);
+        lineChart.setPinchZoom(true);
+
+//        ArrayList<Entry> dataValues = new ArrayList<>();
+
+        LineDataSet homeSet = new LineDataSet(getData(), "Signal 1");
+        homeSet.setColor(ContextCompat.getColor(view.getContext(), R.color.GoldYellow));
+        homeSet.setValueTextColor(ContextCompat.getColor(view.getContext(), R.color.White));
+
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+        final String[] months = new String[]{"Jan", "Feb", "Mar", "Apr"};
+
+        ValueFormatter formatter = new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                return months[(int) value];
+            }
+        };
+
+
+        xAxis.setGranularity(1f);
+        xAxis.setTextColor(ContextCompat.getColor(view.getContext(), R.color.White));
+        xAxis.setValueFormatter(formatter);
+
+        YAxis yAxisRight = lineChart.getAxisRight();
+        yAxisRight.setEnabled(false);
+
+        YAxis yAxis = lineChart.getAxisLeft();
+        yAxis.setTextColor(ContextCompat.getColor(view.getContext(), R.color.White));
+        yAxis.setGranularity(1f);
+
+        LineData data = new LineData(homeSet);
+        lineChart.setData(data);
+        lineChart.invalidate();
+
+
+
+//        if (lineChart.getData() != null && lineChart.getData().getDataSetCount() > 0) {
+//            homeSet = (LineDataSet) lineChart.getData().getDataSetByIndex(0);
+//            homeSet.setValues(dataValues);
+//            lineChart.getData().notifyDataChanged();
+//            lineChart.notifyDataSetChanged();
+//        } else {
+//
+//        }
+
+//        for (int i=0; i < user.experiments.length; i++){
+//            dataValues.add(new Entry(i, user.experiments[]));
+//        }
+>>>>>>> Stashed changes
 
     public List<DataEntry> getMarkerData() {
         List<DataEntry> data = new ArrayList<>();
